@@ -40,12 +40,10 @@ public class TimetableApp {
 
     public static Timetable generateDemoData() {
         List<Timeslot> timeslots = new ArrayList<>(10);
-        long nextTimeslotId = 0L;
         timeslots.add(new Timeslot(DayOfWeek.MONDAY, LocalTime.of(8, 30), LocalTime.of(9, 30)));
         timeslots.add(new Timeslot(DayOfWeek.MONDAY, LocalTime.of(9, 30), LocalTime.of(10, 30)));
 
         List<Room> rooms = new ArrayList<>(3);
-        long nextRoomId = 0L;
         rooms.add(new Room("Room A"));
         rooms.add(new Room("Room B"));
 
