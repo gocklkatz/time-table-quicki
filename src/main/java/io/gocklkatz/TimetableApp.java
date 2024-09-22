@@ -31,17 +31,12 @@ public class TimetableApp {
                 .withPhases(new ExhaustiveSearchPhaseConfig()
                                 .withExhaustiveSearchType(ExhaustiveSearchType.BRUTE_FORCE)
                 );
-
         SolverFactory<Timetable> solverFactory = SolverFactory.create(solverConfig);
-
-        // Load the problem
-        Timetable problem = generateDemoData();
-
-        // Solve the problem
         Solver<Timetable> solver = solverFactory.buildSolver();
+
+        Timetable problem = generateDemoData();
         Timetable solution = solver.solve(problem);
 
-        // Visualize the solution
         printTimetable(solution);
     }
 
