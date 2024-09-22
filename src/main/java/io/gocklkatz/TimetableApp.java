@@ -2,6 +2,8 @@ package io.gocklkatz;
 
 import ai.timefold.solver.core.api.solver.Solver;
 import ai.timefold.solver.core.api.solver.SolverFactory;
+import ai.timefold.solver.core.config.exhaustivesearch.ExhaustiveSearchPhaseConfig;
+import ai.timefold.solver.core.config.exhaustivesearch.ExhaustiveSearchType;
 import ai.timefold.solver.core.config.solver.SolverConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,11 +23,16 @@ public class TimetableApp {
     private static final Logger LOGGER = LoggerFactory.getLogger(TimetableApp.class);
 
     public static void main(String[] args) {
-        SolverFactory<Timetable> solverFactory = SolverFactory.create(new SolverConfig()
+        SolverConfig solverConfig = new SolverConfig()
                 .withSolutionClass(Timetable.class)
                 .withEntityClasses(Lesson.class)
                 .withConstraintProviderClass(TimetableConstraintProvider.class)
-                .withTerminationSpentLimit(Duration.ofSeconds(5)));
+                .withTerminationSpentLimit(Duration.ofSeconds(5))
+                .withPhases(new ExhaustiveSearchPhaseConfig()
+                                .withExhaustiveSearchType(ExhaustiveSearchType.BRUTE_FORCE)
+                );
+
+        SolverFactory<Timetable> solverFactory = SolverFactory.create(solverConfig);
 
         // Load the problem
         Timetable problem = generateDemoData();
