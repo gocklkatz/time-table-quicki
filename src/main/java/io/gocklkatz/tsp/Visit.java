@@ -33,10 +33,10 @@ public class Visit {
         this.previousVisit = previousVisit;
     }
 
-    public double getDistanceFromPrevious() {
+    public int getDistanceFromPrevious() {
         if (previousVisit == null) {
-            return 0.0;
+            return 0;
         }
-        return previousVisit.getLocation().distanceTo(location);
+        return (int) (previousVisit.getLocation().distanceTo(location));
     }
 }

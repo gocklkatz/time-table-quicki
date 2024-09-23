@@ -14,7 +14,8 @@ public class TspConstraintProvider implements ConstraintProvider {
     }
 
     private Constraint distanceConstraint(ConstraintFactory constraintFactory) {
-        return constraintFactory.from(Visit.class)
+        return constraintFactory
+                .forEach(Visit.class)
                 .penalize("Distance from previous", SimpleScore.ONE, Visit::getDistanceFromPrevious);
     }
 }

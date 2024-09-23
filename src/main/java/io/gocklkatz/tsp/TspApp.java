@@ -1,6 +1,8 @@
 package io.gocklkatz.tsp;
 import ai.timefold.solver.core.api.solver.Solver;
 import ai.timefold.solver.core.api.solver.SolverFactory;
+import ai.timefold.solver.core.config.exhaustivesearch.ExhaustiveSearchPhaseConfig;
+import ai.timefold.solver.core.config.exhaustivesearch.ExhaustiveSearchType;
 import ai.timefold.solver.core.config.solver.SolverConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +17,10 @@ public class TspApp {
         SolverConfig solverConfig = new SolverConfig()
                 .withSolutionClass(TspSolution.class)
                 .withEntityClasses(Visit.class)
-                .withConstraintProviderClass(TspConstraintProvider.class);
+                .withConstraintProviderClass(TspConstraintProvider.class)
+                .withPhases(new ExhaustiveSearchPhaseConfig()
+                        .withExhaustiveSearchType(ExhaustiveSearchType.BRUTE_FORCE)
+                );
         SolverFactory<TspSolution> solverFactory = SolverFactory.create(solverConfig);
         Solver<TspSolution> solver = solverFactory.buildSolver();
 

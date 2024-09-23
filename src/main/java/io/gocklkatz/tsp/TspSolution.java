@@ -4,6 +4,7 @@ import ai.timefold.solver.core.api.domain.solution.PlanningEntityCollectionPrope
 import ai.timefold.solver.core.api.domain.solution.PlanningSolution;
 import ai.timefold.solver.core.api.domain.solution.ProblemFactCollectionProperty;
 import ai.timefold.solver.core.api.domain.solution.PlanningScore;
+import ai.timefold.solver.core.api.domain.valuerange.ValueRangeProvider;
 import ai.timefold.solver.core.api.score.buildin.simple.SimpleScore;
 
 import java.util.List;
@@ -25,6 +26,11 @@ public class TspSolution {
     public TspSolution(List<Location> locationList, List<Visit> visitList) {
         this.locationList = locationList;
         this.visitList = visitList;
+    }
+
+    @ValueRangeProvider(id = "locationRange")
+    public List<Visit> getLocationRange() {
+        return visitList;
     }
 
     public List<Location> getLocationList() {
