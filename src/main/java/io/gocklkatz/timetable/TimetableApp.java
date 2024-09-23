@@ -1,4 +1,4 @@
-package io.gocklkatz;
+package io.gocklkatz.timetable;
 
 import ai.timefold.solver.core.api.solver.Solver;
 import ai.timefold.solver.core.api.solver.SolverFactory;

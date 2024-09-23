@@ -1,4 +1,4 @@
-package io.gocklkatz;
+package io.gocklkatz.timetable;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;

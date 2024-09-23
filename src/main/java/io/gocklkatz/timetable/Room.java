@@ -1,4 +1,4 @@
-package io.gocklkatz;
+package io.gocklkatz.timetable;
 
 //Room instances do not change during solving,
 //so Room is also a problem fact.
